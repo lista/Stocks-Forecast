@@ -86,13 +86,18 @@ app.layout = html.Div(
                 html.Div(
                     [  # header
                         html.Img(id="logo"),
-                        html.P(id="ticker")
+                        html.Br(),
+                        html.H1(id="ticker")
                     ],
                     className="header"),
-                html.Div(id="description", className="decription_ticker"),
-                html.Div([], id="graphs-content"),
-                html.Div([], id="main-content"),
-                html.Div([], id="forecast-content")
+                html.Div(
+                    [ 
+                        html.Div(id="description", className="decription_ticker"),
+                        html.Div([], id="graphs-content"),
+                        html.Div([], id="main-content"),
+                        html.Div([], id="forecast-content")
+                    ],
+                    className="after-header"),
             ],
             className="content"),
     ],
@@ -110,7 +115,7 @@ app.layout = html.Div(
 ], [Input("submit", "n_clicks")], [State("dropdown_tickers", "value")])
 def update_data(n, val):  # inpur parameter(s)
     if n == None: 
-        return (dcc.Markdown('''Not sure what symbol to enter? Visit the Yahoo Finance Stock Lookup [HERE](https://finance.yahoo.com/lookup)''', link_target="_blank")), "https://time.com/nextadvisor/wp-content/uploads/2021/09/na-what-are-cyclical-stocks.jpg", "Stonks", None, None, None
+        return (dcc.Markdown('''Not sure what symbol to enter? Visit the Yahoo Finance Stock Lookup [HERE](https://finance.yahoo.com/lookup)''', link_target="_blank")), None, "Yahoo Finance Stock Predictor", None, None, None
         # raise PreventUpdate
     else:
         if val == None:
